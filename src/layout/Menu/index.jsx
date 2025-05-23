@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './style.scss';
 import $ from 'jquery';
 
-import VideoCam from '@/assets/icons/videocam.png'
 
 //import react router dom
 import { Link } from 'react-router-dom';
@@ -40,11 +39,11 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
         <div className="Navbar-animated__menu" data-isactive={menuIsActive === true ? 'true' : menuIsActive === false ? 'false' : null}>
             <div className="hamburger_menu_list">
 
-                <Link to={'/cameras'} onClick={menuHide}>
+                {/* <Link to={'/cameras'} onClick={menuHide}>
                     <div className='menu_text_main_inner'>
                         <img src={VideoCam} width={48} />
                     </div>
-                </Link>
+                </Link> */}
                 <Link to={'/products/flowers'} onClick={menuHide}>
                     <div className='menu_text_main_inner'>
                         <p>{t('navbar.flowers')}</p>
@@ -65,9 +64,9 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
                         <p>{t('navbar.whoWeAre')}</p>
                     </div>
                 </Link>
-                <Link to={'/cooperation'} onClick={menuHide}>
+                <Link to={'/suppliers'} onClick={menuHide}>
                     <div className='menu_text_main_inner'>
-                        <p>{t('navbar.cooperation')}</p>
+                        <p>{t('navbar.suppliers')}</p>
                     </div>
                 </Link>
                 <Link to={'/contacts'} onClick={menuHide}>

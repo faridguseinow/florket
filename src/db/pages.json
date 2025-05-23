@@ -42,12 +42,12 @@
       }
    },
    {
-      "page_name": "cooperation",
+      "page_name": "suppliers",
       "headerWrapper": {
          "img": "https://sun9-49.userapi.com/impg/8XLBtkNHhCnJ4-seKbT5ClREMBbdBLLYK4ogxw/t_Ps10eJOdo.jpg?size=2560x1707&quality=95&sign=8d8ba9965653cb4373977b533e6b7dc0&type=album",
          "title": {
-            "en": "Cooperation",
-            "ru": "Сотрудничество"
+            "en": "Suppliers",
+            "ru": "Поставщики"
          }
       },
       "galleryTitle": {

@@ -7,7 +7,7 @@ import Logo_S from '@/assets/icons/logo_sm.svg'
 import ArrowDown from '@/assets/icons/arrowDown';
 // import ShopSVG from '@/assets/icons/shop.svg'
 // import DownloadSVG from '@/assets/icons/download.svg'
-import DownloadSVG from '@/assets/icons/eye.png'
+// import DownloadSVG from '@/assets/icons/eye.png'
 // import VideoCam from '@/assets/icons/videocam.png'
 
 ///Import react router dom
@@ -90,8 +90,8 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
                                     <Link to={'/about'}>
                                         <li>{t('navbar.whoWeAre')}</li>
                                     </Link>
-                                    <Link to={'/cooperation'}>
-                                        <li>{t('navbar.cooperation')}</li>
+                                    <Link to={'/suppliers'}>
+                                        <li>{t('navbar.suppliers')}</li>
                                     </Link>
                                 </ul>
                             </div>
@@ -131,7 +131,7 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
                         </a> */}
                         <a href={window.innerWidth <= 767 ? "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=652358148#gid=652358148" : "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=1708159673#gid=1708159673"} target={'_blank'}>
                             <button>
-                                <img src={DownloadSVG} width={24}/>
+                                {/* <img src={DownloadSVG} width={24}/> */}
                                 <span>{t('navbar.priceList')}</span>
                             </button>
                         </a>

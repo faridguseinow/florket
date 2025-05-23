@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import '../style.scss';
 
 ///Import Images
-import Close from '@/assets/icons/close.svg';
 
 const ThreeDViewer = ({ modalIsActive, setModalIsActive, glbPath }) => {
    const modalRef = useRef();
