@@ -20,6 +20,8 @@ import Num4 from '@/assets/icons/flowers_icons/exotic.png'
 import Num6 from '@/assets/icons/flowers_icons/domestic.png'
 import Num8 from '@/assets/icons/flowers_icons/packaging.png';
 import Num9 from '@/assets/icons/flowers_icons/kitay.png'
+import Num10 from '@/assets/icons/flowers_icons/suxocvet.png'
+
 // import Loading from '@/assets/icons/loading.svg';
 
 // import Call from '@/assets/icons/flowers_icons/call.png'
@@ -413,6 +415,19 @@ function index() {
                                 </div>
 
                             </div>
+
+                            <div className="num_section suxocvet">
+
+                                <div className="num_sec_left">
+                                    <img src={Num10} width={35} />
+                                    <p>{t('contact.section1.office10')}</p>
+                                </div>
+                                <div className="num_sec_right">
+                                    <a href='https://wa.me/79998382889' target='_blank'>8 (999) 838 28 89</a>
+                                </div>
+
+                            </div>
+
 
                             <div className="num_section rosekenya">
 
