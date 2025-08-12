@@ -122,20 +122,20 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
 
                 <div className="nav_right">
 
-                    {/* <div className="shop_button">
-                        <a href={"https://gfcc.clients.site/"} target={'_blank'}>
+                    <div className="shop_button">
+                        <a href={"https://gfcc-app.netlify.app/price"}>
                             <button>
-                                <img src={ShopSVG}/>
-                                <span>Магазин</span>
+                                {/* <img src={DownloadSVG} width={24} /> */}
+                                <span>{t('navbar.priceList')}</span>
                             </button>
                         </a>
-                        <a href={window.innerWidth <= 767 ? "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=652358148#gid=652358148" : "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=1708159673#gid=1708159673"} target={'_blank'}>
+                        {/* <a href={window.innerWidth <= 767 ? "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=652358148#gid=652358148" : "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=1708159673#gid=1708159673"} target={'_blank'}>
                             <button>
                                 <img src={DownloadSVG} width={24}/>
                                 <span>{t('navbar.priceList')}</span>
                             </button>
-                        </a>
-                    </div> */}
+                        </a> */}
+                    </div>
 
                     <div className="localization__wrapper">
                         <span

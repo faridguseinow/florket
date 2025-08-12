@@ -218,15 +218,15 @@ const Index = () => {
                </div>
 
 
-               {/* <div className="product_button">
+               <div className="product_button">
                   <Button
-                     btnText={'Перейти в магазин'}
+                     btnText={'Прайслист'}
                      className={'btn btn_white hover_gold'}
                      icon={'arrow-right'}
-                     href={'https://gfcc.clients.site/'}
+                     href={'https://gfcc-app.netlify.app/price'}
                      target={'_blank'}
                   />
-               </div> */}
+               </div> 
             </div>
          </div>
          <div className="product_info">
