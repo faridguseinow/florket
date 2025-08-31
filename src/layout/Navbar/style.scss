@@ -21,7 +21,9 @@
 
         .nav_logo {
             display: flex;
-
+            flex-direction: row-reverse;
+            align-items: center;
+            
             .logo {
                 display: flex;
 
@@ -35,12 +37,12 @@
             }
 
             .logo_s {
-                display: none;
+                display: block;
 
                 a {
 
                     img {
-                        width: 70px;
+                        width: 50px;
 
                     }
                 }

@@ -8,8 +8,6 @@ import BackBtn from '@/components/BackBtn/index';
 
 ////IMPORT DB
 import FlowersData from '@/db/flowers.json';
-import PlantsData from '@/db/plants.json';
-import AccessoriesData from '@/db/accessories.json';
 
 ///Import Modals
 import ThreeDModal from '@/components/Modals/ThreeDViewer';

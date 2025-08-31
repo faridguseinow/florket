@@ -38,40 +38,14 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
     return (
         <div className="Navbar-animated__menu" data-isactive={menuIsActive === true ? 'true' : menuIsActive === false ? 'false' : null}>
             <div className="hamburger_menu_list">
-
-                {/* <Link to={'/cameras'} onClick={menuHide}>
-                    <div className='menu_text_main_inner'>
-                        <img src={VideoCam} width={48} />
-                    </div>
-                </Link> */}
                 <Link to={'/products/flowers'} onClick={menuHide}>
                     <div className='menu_text_main_inner'>
                         <p>{t('navbar.flowers')}</p>
                     </div>
                 </Link>
-                <Link to={'/products/plants'} onClick={menuHide}>
-                    <div className='menu_text_main_inner'>
-                        <p>{t('navbar.plants')}</p>
-                    </div>
-                </Link>
-                <Link to={'/products/accessories'} onClick={menuHide}>
-                    <div className='menu_text_main_inner'>
-                        <p>{t('navbar.accessories')}</p>
-                    </div>
-                </Link>
                 <Link to={'/about'} onClick={menuHide}>
                     <div className='menu_text_main_inner'>
                         <p>{t('navbar.whoWeAre')}</p>
-                    </div>
-                </Link>
-                <Link to={'/suppliers'} onClick={menuHide}>
-                    <div className='menu_text_main_inner'>
-                        <p>{t('navbar.suppliers')}</p>
-                    </div>
-                </Link>
-                <Link to={'/contacts'} onClick={menuHide}>
-                    <div className='menu_text_main_inner'>
-                        <p>{t('navbar.contact')}</p>
                     </div>
                 </Link>
 

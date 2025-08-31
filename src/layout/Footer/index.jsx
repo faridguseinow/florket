@@ -83,7 +83,7 @@ const Index = () => {
                             <h1>
                                 Партнер:
                             </h1>
-                            <Link to={'https://opt.oasis-gc.ru/'} target='_blank' className='oasis'>
+                            <Link to={'https://oasisflowers.ru/'} target='_blank' className='oasis'>
                                 <img src={OasisLogo} alt="oasis" />
                             </Link>
 

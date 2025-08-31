@@ -2,13 +2,8 @@ import React from 'react'
 import './style.scss'
 
 //import images
-import Logo from '@/assets/icons/logo.svg'
-import Logo_S from '@/assets/icons/logo_sm.svg'
-import ArrowDown from '@/assets/icons/arrowDown';
-// import ShopSVG from '@/assets/icons/shop.svg'
-// import DownloadSVG from '@/assets/icons/download.svg'
-// import DownloadSVG from '@/assets/icons/eye.png'
-// import VideoCam from '@/assets/icons/videocam.png'
+import Logo from '@/assets/icons/logo_text_florket.png'
+import Logo_S from '@/assets/icons/logo_florket.png'
 
 ///Import react router dom
 import { Link } from 'react-router-dom';
@@ -60,82 +55,20 @@ const Index = ({ menuIsActive, setMenuIsActive }) => {
                             <Link to={'/products/flowers'}>
                                 <div className='menu_text_main_inner'>
                                     <p>{t('navbar.collection')}</p>
-                                    <ArrowDown />
                                 </div>
                             </Link>
-
-                            <div className='nav_menu_arrow_list'>
-                                <ul>
-                                    <Link to={'/products/flowers'}>
-                                        <li>{t('navbar.flowers')}</li>
-                                    </Link>
-                                    <Link to={'/products/plants'}>
-                                        <li>{t('navbar.plants')}</li>
-                                    </Link>
-                                    <Link to={'/products/accessories'}>
-                                        <li>{t('navbar.accessories')}</li>
-                                    </Link>
-                                </ul>
-                            </div>
                         </div>
                         <div className="menu_text_main">
                             <Link to={'/about'}>
                                 <div className='menu_text_main_inner'>
                                     <p>{t('navbar.aboutUs')}</p>
-                                    <ArrowDown />
                                 </div>
                             </Link>
-                            <div className='nav_menu_arrow_list'>
-                                <ul>
-                                    <Link to={'/about'}>
-                                        <li>{t('navbar.whoWeAre')}</li>
-                                    </Link>
-                                    <Link to={'/suppliers'}>
-                                        <li>{t('navbar.suppliers')}</li>
-                                    </Link>
-                                </ul>
-                            </div>
                         </div>
-
-                        <div className="menu_text_main">
-
-                            <Link to={'/contacts'}>
-                                <div className='menu_text_main_inner'>
-                                    <p>{t('navbar.contact')}</p>
-                                </div>
-                            </Link>
-
-                        </div>
-
-                        {/* <div className="menu_text_main camera">
-
-                            <Link to={'/cameras'}>
-                                <div className='menu_text_main_inner camera_inner'>
-                                    <img src={VideoCam} width={24} />
-                                    <p>{t('navbar.showcase')}</p>
-                                </div>
-                            </Link>
-
-                        </div> */}
                     </div>
                 </div>
 
                 <div className="nav_right">
-
-                    <div className="shop_button">
-                        <a href={"https://gfcc-app.netlify.app/price"}>
-                            <button>
-                                {/* <img src={DownloadSVG} width={24} /> */}
-                                <span>{t('navbar.priceList')}</span>
-                            </button>
-                        </a>
-                        {/* <a href={window.innerWidth <= 767 ? "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=652358148#gid=652358148" : "https://docs.google.com/spreadsheets/d/13crEl9oqD4mMIwqzXJKNrh8zemP5Tf0pw53jblwvByA/edit?gid=1708159673#gid=1708159673"} target={'_blank'}>
-                            <button>
-                                <img src={DownloadSVG} width={24}/>
-                                <span>{t('navbar.priceList')}</span>
-                            </button>
-                        </a> */}
-                    </div>
 
                     <div className="localization__wrapper">
                         <span

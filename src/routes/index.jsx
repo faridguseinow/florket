@@ -4,12 +4,7 @@ import React from 'react';
 import Home from '@/pages/Home';
 import Products from '@/pages/Products';
 import FlowersCollection from '@/pages/Products/Flowers/Collection';
-import PlantsCollection from '@/pages/Products/Plants/Collection';
 import SingleProduct from '@/pages/SingleProduct';
-import Suppliers from '@/pages/Suppliers';
-import Contacts from '@/pages/Contacts';
-import About from '@/pages/About';
-
 import Footer from '@/layout/Footer';
 
 //IMPORT
@@ -28,16 +23,8 @@ const AnimatedRoutes = () => {
             <Route path='/products/flowers/' element={<Products />} />
             <Route path='/products/flowers/:collection' element={<FlowersCollection />} />
 
-            <Route path='/products/plants' element={<Products />} />
-            <Route path='/products/plants/:collection' element={<PlantsCollection />} />
-
-            <Route path='/products/accessories' element={<Products />} />
-            <Route path='/suppliers' element={<Suppliers />} />
-
             {/* SINGLE PRODUCT PAGE */}
             <Route path='/product' element={<SingleProduct />} />
-            <Route path='/contacts' element={<Contacts />} />
-            <Route path='/about' element={<About />} />
 
             <Route
                path="*"

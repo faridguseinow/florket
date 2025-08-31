@@ -6,8 +6,6 @@ import HeaderRepeat from '@/layout/HeaderRepeat/index';
 
 //Import Component
 import Flowers from './Flowers/index';
-import Plants from './Plants/index';
-import Accessories from './Accessories/index';
 
 //Import DB
 import PagesData from '@/db/pages.json';
