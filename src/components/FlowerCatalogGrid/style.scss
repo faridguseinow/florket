@@ -1,0 +1,133 @@
+.flower-grid {
+  max-width: 1140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.flower-card {
+  width: 350px;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--bg_color2);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.flower-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+
+    .flower-card:hover & {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.flower-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .flower-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font-family: var(--f-bold);
+  }
+
+  .flower-description {
+    font-size: 14px;
+    color: var(--white2);
+    margin-bottom: 10px;
+    font-family: var(--f-regular);
+  }
+
+  .flower-price {
+    font-size: 18px;
+    color: var(--gold);
+    font-family: var(--f-bold);
+    margin-bottom: 10px;
+  }
+
+  .flower-time {
+    font-size: 14px;
+    color: var(--white2);
+    margin-bottom: 10px;
+    font-family: var(--f-regular);
+  }
+
+  .flower-assortment {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--f-regular);
+
+    li {
+      font-size: 14px;
+      color: var(--white2);
+      padding-left: 16px;
+      position: relative;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+      }
+    }
+  }
+}
+
+.error-message {
+  text-align: center;
+  font-size: 20px;
+  color: var(--white2);
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .flower-grid {
+    flex-direction: row;
+    width: 100%;
+    padding: 16px;
+    gap: 8px;
+
+    .flower-card {
+      width: 180px;
+      height: 350px;
+
+      .flower-info {
+        padding: 8px;
+
+        .flower-time {
+          display: none;
+        }
+
+        .flower-assortment {
+          display: none;
+        }
+      }
+    }
+  }
+}

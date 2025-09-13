@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Index = ({ href, className, disabled, clickHandler, btnText, icon, target }) => {
   return (
-    <div className="button__wrapper">
+    <div className="button__wrapper glass">
       <Link to={href} target={target && target}>
         <button className={className} disabled={disabled} onClick={clickHandler}>
           {btnText}

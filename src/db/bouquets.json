@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Букет «Нежность»",
+    "description": "Лёгкий и воздушный букет из белых роз и эустомы для особых случаев.",
+    "price": 3500,
+    "currency": "₽",
+    "preparationTime": "30 минут",
+    "assortment": ["Розы белые", "Эустома", "Зелень"],
+    "inner_URL": "bouquet-neznost",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2Fef6c3d569220b4edc906f365d24f2a89e4254a07-1920x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Букет «Яркий день»",
+    "description": "Сочный микс из разноцветных роз и гербер для поднятия настроения.",
+    "price": 4200,
+    "currency": "₽",
+    "preparationTime": "45 минут",
+    "assortment": ["Розы разноцветные", "Герберы", "Альстромерия"],
+    "inner_URL": "bouquet-yarkiy-den",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F80b53137002ec3d98715ff06e709e183f83c3c8e-1920x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F9782cd350c3acddf28fd2a969777d4c5f2183be6-1920x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F42091ea31f29f5768c1a38a3ef20b3344df34f42-1920x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2Fa2bd7aa52d22acb030676306de8ed8500073e931-2048x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2Fd938f8555c717b5aa6f722f2825b376f17b060a0-2048x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F3daf6f5500257f61074e5c157010cb12e86f325e-2048x2560.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F442e9d421c0f66dc8757e68e6d7afa60f8cddfa7-1500x1875.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2Fc147d197e2b02d1f58924dbf595c679e650ce78a-1500x1875.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F2bd1629b7b513da7b66c31e8b0bd375de7baf802-1500x1875.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F88dedf50b8a940fc814a8f9b657b320d750cf6cd-1500x1875.jpg&w=640&q=75"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Букет «Романтика»",
+    "description": "Красные розы в классическом оформлении — идеальный выбор для признания в любви.",
+    "price": 5000,
+    "currency": "₽",
+    "preparationTime": "60 минут",
+    "assortment": ["Розы красные", "Зелень"],
+    "inner_URL": "bouquet-romantika",
+    "images": [
+      {
+        "img": "https://www.flos31.ru/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fpywvta1a%2Fproduction%2F8b25388f54bfcee6d5f7e7ee3e2aad16d16c6490-1368x1710.jpg&w=640&q=75"
+      }
+    ]
+  }
+]

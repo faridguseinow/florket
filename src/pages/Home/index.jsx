@@ -1,31 +1,29 @@
 import React from 'react';
 import './style.scss';
 import { motion } from 'framer-motion';
+import bouquets from "../../db/bouquets.json";
 
 //Import Components
 import Button from '@/components/Button/Index';
-import Slider from '@/components/Slider/index';
+import Slider from '@/components/Slider/Index';
+import FlowerCatalogGrid from '@/components/FlowerCatalogGrid/Index';
 import { Helmet } from 'react-helmet';
-
-//Import Utils
-import { useTranslation } from 'react-i18next';
 
 ///Import Constants
 import { pageVariants, pageTransition } from '@/constants/framerSettings.js';
 import ParallaxText from '@/components/Parallax';
 
 const Index = () => {
-    const { t, i18n } = useTranslation();
 
     let sliderMainOptions = [
         {
-            img: 'https://i.pinimg.com/1200x/02/e3/4b/02e34bb46db213582c72b0db23c02850.jpg'
+            img: 'https://sundragonflorals.com/cdn/shop/files/IMG_9203-scaled.jpg?v=1739806612'
         },
         {
             img: 'https://i.pinimg.com/1200x/2d/31/77/2d3177fc5186bead58efbe829729333d.jpg'
         },
         {
-            img: 'https://i.pinimg.com/1200x/cc/7d/b3/cc7db39d0defe665b43e8575e32b22b9.jpg'
+            img: 'https://images.squarespace-cdn.com/content/v1/58c9a1a5d1758e7bb29f1cf5/1587503218031-5MW47REL41PYF0BXPUSA/IMG_3503.jpg?format=1000w'
         }
     ]
 
@@ -40,74 +38,37 @@ const Index = () => {
 
             <Helmet>
                 <title>Флоркет - Букет на любой вкус!</title>
-                <link rel="canonical" href="http://gfcc.ru/" />
+                <link rel="canonical" href="http://florket.ru/" />
             </Helmet>
 
             <header>
-                <div className="header_slogan">
-                    <p className='p1'>{t('home.headerDesc1')}</p>
-                    <p className='p2'>{t('home.headerDesc2')}</p>
 
-                </div>
                 <Slider
                     loop={true}
                     options={sliderMainOptions}
                 />
 
+                <div className="header_slogan">
+                    <p className='p1'>Флоркет - сервис заказных букетов премиум-класса</p>
+                    <p className='p2'>Доставка цветов в Москве от 60 минут.</p>
+                    <p className='p2'>Фото перед отправкой + Бесплатная открытка.</p>
+                    <p className='p2'>Эквадорские розы, сезонные цветы, экзоты, монобукеты и авторские.</p>
+
+                </div>
+
+
             </header>
 
-            <div className="about_wrapper">
-                <div className="about_wrapper_inner">
-
-                    <div className="left_content">
-                        <img src="https://i.pinimg.com/1200x/b0/45/98/b0459866593afef9c69c97254130abdd.jpg" alt="" />
-                    </div>
-                    <div className="right_content">
-                        <p className='content_title'>{t('home.aboutSection.title')}</p>
-
-                        <span className='content_desc'>{t('home.aboutSection.desc')}</span>
-
-                        <div className="content_button">
-                            <Button
-                                btnText={t('home.aboutSection.btnText')}
-                                className={'btn btn_white hover_gold'}
-                                icon={'arrow-right'}
-                                href={'/about'}
-                            />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div className="main_title_wrapper">
-                <div className="main_slogan">
-
-                    <div className="main_slogan_text">
-                        <h1>{t('home.collectionSection.title')}</h1>
-                        <p>{t('home.collectionSection.desc')}</p>
-                        <div className="content_button">
-                            <Button
-                                btnText={t('home.collectionSection.btnText')}
-                                className={'btn btn_white hover_gold'}
-                                icon={'arrow-right'}
-                                href={'/about'}
-                            />
-                        </div>
-                    </div>
-
-                </div>
+            <div className="catalogue" id="catalogue">
+                <h1>Каталог букетов:</h1>
+                <FlowerCatalogGrid items={bouquets} />
             </div>
 
             <div className="scroller_container">
-                <h1>{t('home.marqueeSection.title')}</h1>
+                <h1>Плантации цветов:</h1>
                 <div className="scroller_departments">
 
                     <div className="scroll_flowers scroll_parts">
-                        <div className="scroller_text">
-                            <h1>{t('home.marqueeSection.flowers')}</h1>
-                        </div>
-
                         <ParallaxText baseVelocity={-1} size={2}>
                             <img src="https://sun9-48.userapi.com/impg/nMctEaxRZdeF4u3ad-nnx4aH06fvtGNBVzAWiw/4qNNq6-VWP4.jpg?size=1080x720&quality=95&sign=6961a86d4edb0d31f7e8b4d1295badf1&type=album" />
                             <img src="https://sun9-40.userapi.com/impg/1ENGAYDDpURdfP4tKwQJFr0Xe7iHKlM5R5ozwQ/XcJlM2tCL6U.jpg?size=1080x720&quality=95&sign=ede28e0ac82d593a3f7c4f32ec257897&type=album" />
@@ -122,6 +83,29 @@ const Index = () => {
 
                 </div>
             </div>
+
+            <div className="about_wrapper">
+                <div className="about_text">
+                    <h1>О нас:</h1>
+                    <p>Мы — «Флоркет», сервис заказных премиум букетов.
+                        <br />Работаем напрямую с ведущими цветочными складами, отбирая только самые свежие и редкие сорта. <br />В наших композициях — эквадорские розы, тропические экзоты и сезонные шедевры флористики.</p>
+                </div>
+                <div className="contacts">
+                    <h1>Контакты:</h1>
+                    <Button
+                        btnText={'WhatsApp'}
+                        className={'btn btn_green hover_green'}
+                        href={'https://wa.me/79309920873'}
+                    />
+                    <Button
+                        btnText={'Telegram'}
+                        className={'btn btn_blue hover_blue'}
+                        href={'https://t.me/faridguseinow'}
+                    />
+                </div>
+            </div>
+
+
 
         </motion.div>
     )

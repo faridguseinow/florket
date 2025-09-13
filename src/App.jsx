@@ -7,7 +7,6 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 //import layout
 import Navbar from '@/layout/Navbar';
-import NavbarMenu from '@/layout/Menu';
 import AnimatedRoutes from '@/routes/index';
 
 //Import React router dom
@@ -38,7 +37,6 @@ function App() {
         <div className="fixed-img__wrapper"></div>
 
         <Navbar setMenuIsActive={setMenuIsActive} menuIsActive={menuIsActive} />
-        <NavbarMenu setMenuIsActive={setMenuIsActive} menuIsActive={menuIsActive} />
 
         {/* ANIMATED ROUTE */}
         <AnimatedRoutes />

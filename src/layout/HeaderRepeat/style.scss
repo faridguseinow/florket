@@ -29,13 +29,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      h2 {
-         font-family: var(--f-bold);
-         font-size: 80px;
-         color: var(--white);
-         text-shadow: 5px 5px 35px #000000;
-      }
    }
 
    @media screen and (max-width: 1140px) {
