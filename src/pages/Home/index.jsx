@@ -37,8 +37,8 @@ const Index = () => {
             className="home_page_container">
 
             <Helmet>
-                <title>Флоркет - Букет на любой вкус!</title>
-                <link rel="canonical" href="http://florket.ru/" />
+                <title>Florket - Букет на любой вкус!</title>
+                <link rel="canonical" href="https://florket.netlify.app/" />
             </Helmet>
 
             <header>
