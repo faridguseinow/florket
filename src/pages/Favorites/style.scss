@@ -1,0 +1,29 @@
+.favorites_page {
+  padding: 120px 16px;
+}
+
+.favorites_title {
+  margin-bottom: 24px;
+}
+
+/* GRID */
+
+.favorites_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  .favorites_page {
+    padding: 64px 16px;
+  }
+
+  .favorites_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

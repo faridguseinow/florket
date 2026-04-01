@@ -1,0 +1,31 @@
+.search_page {
+  padding: 120px 16px;
+}
+
+.search_title {
+  margin-bottom: 24px;
+}
+
+/* GRID */
+
+.search_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* EMPTY */
+
+.empty_state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .search_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
