@@ -222,14 +222,18 @@ header {
           padding: 10px;
 
           input {
-            font-size: 14px;
+            font-size: 16px;
           }
         }
 
         .nav_actions {
-          gap: 12px;
+          gap: 012px;
 
           .nav_button {
+            display: none;
+          }
+
+          .order_btn {
             display: none;
           }
 

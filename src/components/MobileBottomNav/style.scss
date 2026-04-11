@@ -29,13 +29,12 @@
   color: #888;
   text-decoration: none;
 
-  transition: 0.2s ease;
+  transition: 0.6s ease;
 }
 
 /* активная вкладка */
 .nav-item.active {
-  color: #354791;
-  transform: translateY(-2px);
+  color: var(--color-primary);
 }
 
 /* только мобилка */

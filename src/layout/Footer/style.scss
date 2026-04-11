@@ -74,6 +74,14 @@
     text-align: center;
     font-size: 13px;
     color: var(--color-border);
+
+    .footer__legal_links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
   }
 }
 

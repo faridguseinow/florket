@@ -1,0 +1,22 @@
+.legal_page {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 140px 20px 80px;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    max-width: 780px;
+    margin: 0 0 12px;
+    color: #374151;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .legal_page {
+    padding: 90px 16px 40px;
+  }
+}

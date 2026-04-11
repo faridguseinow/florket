@@ -2,10 +2,12 @@
   --color-white: #ffffff;
   --color-black: #111111;
 
-  --color-gray: #eeeeee71;
+  --color-gray: #eff3f8;
 
   --color-primary: #1f3859;
   --color-primary-hover: #1f2937;
+  --color-accent: #ff6b6b;
+  --color-accent-soft: #ffe3e3;
 
   --color-border: #e6e6e6;
 
@@ -26,7 +28,6 @@ html,
 body,
 #root {
   min-height: 100vh;
-  background: var(--color-white);
   font-family: 'system-ui', sans-serif;
   color: var(--color-black);
   margin: 0;
@@ -35,6 +36,10 @@ body,
 body {
   display: flex;
   justify-content: center;
+  background:
+    radial-gradient(circle at 10% -20%, #fdf0f2 0%, transparent 30%),
+    radial-gradient(circle at 100% 0%, #edf4ff 0%, transparent 38%),
+    var(--color-white);
 }
 
 #root {
@@ -87,20 +92,28 @@ a {
 button,
 .btn {
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(140deg, var(--color-primary) 0%, #2a4a75 100%);
   color: white;
   padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(31, 56, 89, 0.2);
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  background: linear-gradient(140deg, var(--color-primary-hover) 0%, #2f3f5b 100%);
 }
 
 //SLIDER

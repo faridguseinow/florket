@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import './style.scss'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet'
@@ -6,13 +6,15 @@ import { Helmet } from 'react-helmet'
 // components
 import Slider from '@/components/Slider'
 import FlowerCatalogGrid from '@/components/FlowerCatalogGrid'
+import { useStore } from '@/useStore'
 
 // constants
 import { pageVariants, pageTransition } from '@/constants/framerSettings.js'
 
 const Index = () => {
     const catalogRef = useRef(null)
-    const [activeCategory, setActiveCategory] = useState("all")
+    const { products } = useStore()
+    const [activeSubcategory, setActiveSubcategory] = useState("all")
 
     const sliderMainOptions = [
         {
@@ -26,17 +28,33 @@ const Index = () => {
         }
     ]
 
-    const categoryChips = [
-        "Букеты",
-        "Розы",
-        "Тюльпаны",
-        "Хризантемы",
-        "Микс букеты",
-        "Моно букеты",
-    ]
+    const subcategoryChips = useMemo(() => {
+        const fromProducts = [...new Set(
+            (Array.isArray(products) ? products : [])
+                .map((item) => String(item?.subcategory ?? "").trim())
+                .filter(Boolean)
+        )]
 
-    const handleCategoryClick = (category) => {
-        setActiveCategory(category)
+        if (fromProducts.length) {
+            return ["all", ...fromProducts]
+        }
+
+        return [
+            "all",
+            "Розы",
+            "Тюльпаны",
+            "Пионы",
+            "Хризантема",
+            "Гортензия",
+            "Альстромерия",
+            "Гербера",
+            "Гипсофила",
+            "Смешанное",
+        ]
+    }, [products])
+
+    const handleSubcategoryClick = (subcategory) => {
+        setActiveSubcategory(subcategory)
 
         catalogRef.current?.scrollIntoView({
             behavior: "smooth",
@@ -58,18 +76,18 @@ const Index = () => {
                 <title>Флоркет — Главная</title>
             </Helmet>
 
-            {/* CATEGORIES */}
+            {/* SUBCATEGORIES */}
             <div className="categories_bar">
                 <div className="categories_inner">
 
-                    {categoryChips.map((category) => (
+                    {subcategoryChips.map((subcategory) => (
                         <button
-                            key={category}
+                            key={subcategory}
                             type="button"
-                            className={`category_chip ${activeCategory === category ? "active" : ""}`}
-                            onClick={() => handleCategoryClick(category)}
+                            className={`category_chip ${activeSubcategory === subcategory ? "active" : ""}`}
+                            onClick={() => handleSubcategoryClick(subcategory)}
                         >
-                            {category}
+                            {subcategory === "all" ? "Все букеты" : subcategory}
                         </button>
                     ))}
 
@@ -94,7 +112,7 @@ const Index = () => {
 
                 <h2>Подобрать букет</h2>
 
-                <FlowerCatalogGrid selectedCategory={activeCategory} />
+                <FlowerCatalogGrid selectedSubcategory={activeSubcategory} />
 
             </section>
 

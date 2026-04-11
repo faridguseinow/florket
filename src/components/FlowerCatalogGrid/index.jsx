@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import PropTypes from "prop-types"
 import { useStore } from "../../useStore"
 import ProductCard from "@/components/ProductCard"
 import "./style.scss"
 
-const FlowerCatalogGrid = ({ selectedCategory = "all" }) => {
+const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
 
   const { products, productsReady } = useStore()
 
@@ -12,28 +13,30 @@ const FlowerCatalogGrid = ({ selectedCategory = "all" }) => {
 
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("all")
+  const [subcategory, setSubcategory] = useState("all")
   const [height, setHeight] = useState("all")
   const [color, setColor] = useState("all")
   const [occasion, setOccasion] = useState("all")
   const [type, setType] = useState("all")
 
-  // 🔻 динамические фильтры
   const [categories, setCategories] = useState([])
   const [subcategories, setSubcategories] = useState([])
+  const [heights, setHeights] = useState([])
   const [colors, setColors] = useState([])
   const [occasions, setOccasions] = useState([])
   const [types, setTypes] = useState([])
 
   useEffect(() => {
-    setCategory(selectedCategory || "all")
-  }, [selectedCategory])
+    setSubcategory(selectedSubcategory || "all")
+  }, [selectedSubcategory])
 
   useEffect(() => {
     const clean = Array.isArray(products) ? products : []
 
     setItems(clean)
     setCategories([...new Set(clean.map(i => i.category).filter(Boolean))])
-    setSubcategories([...new Set(clean.map(i => i.height).filter(Boolean))])
+    setSubcategories([...new Set(clean.map(i => i.subcategory).filter(Boolean))])
+    setHeights([...new Set(clean.map(i => i.height).filter(Boolean))])
     setTypes([...new Set(clean.map(i => i.type).filter(Boolean))])
     setColors([...new Set(clean.flatMap(i => i.color || []).filter(Boolean))])
     setOccasions([...new Set(clean.flatMap(i => i.occasion || []).filter(Boolean))])
@@ -45,6 +48,7 @@ const FlowerCatalogGrid = ({ selectedCategory = "all" }) => {
     if (search && !item.title.toLowerCase().includes(search.toLowerCase())) return false
 
     if (category !== "all" && item.category !== category) return false
+    if (subcategory !== "all" && item.subcategory !== subcategory) return false
     if (height !== "all" && item.height !== height) return false
     if (type !== "all" && item.type !== type) return false
 
@@ -74,9 +78,14 @@ const FlowerCatalogGrid = ({ selectedCategory = "all" }) => {
             {categories.map(c => <option key={c} value={c}>{c}</option>)}
           </select>
 
+          <select value={subcategory} onChange={e => setSubcategory(e.target.value)}>
+            <option value="all">Подкатегория</option>
+            {subcategories.map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
+
           <select value={height} onChange={e => setHeight(e.target.value)}>
             <option value="all">Высота</option>
-            {subcategories.map(s => <option key={s} value={s}>{s}</option>)}
+            {heights.map(h => <option key={h} value={h}>{h}</option>)}
           </select>
 
           <select value={type} onChange={e => setType(e.target.value)}>
@@ -112,6 +121,10 @@ const FlowerCatalogGrid = ({ selectedCategory = "all" }) => {
     </div>
 
   )
+}
+
+FlowerCatalogGrid.propTypes = {
+  selectedSubcategory: PropTypes.string,
 }
 
 export default FlowerCatalogGrid

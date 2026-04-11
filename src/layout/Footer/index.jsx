@@ -1,4 +1,5 @@
 import "./style.scss"
+import { Link } from "react-router-dom"
 import {
   EMAIL,
   MAX_URL,
@@ -36,10 +37,11 @@ export default function Footer() {
         <div className="footer__col">
           <h3 className="footer__title">Информация</h3>
           <ul>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Доставка</a></li>
-            <li><a href="#">Оплата</a></li>
-            <li><a href="#">Политика конфиденциальности</a></li>
+            <li><Link to="/delivery">Доставка</Link></li>
+            <li><Link to="/contacts">Контакты</Link></li>
+            <li><Link to="/privacy">Политика конфиденциальности</Link></li>
+            <li><Link to="/terms">Пользовательское соглашение</Link></li>
+            <li><Link to="/cookies">Cookie</Link></li>
           </ul>
         </div>
 
@@ -65,9 +67,11 @@ export default function Footer() {
       {/* Нижняя линия */}
       <div className="footer__bottom">
         <p>© {new Date().getFullYear()} Флоркет. Все права защищены.</p>
-        {/* <a href="https://faridguseinow.framer.website/" target="_blank" rel="noopener noreferrer">
-          Создание сайта - Гусейнов Фарид
-        </a> */}
+        <div className="footer__legal_links">
+          <Link to="/privacy">Политика конфиденциальности</Link>
+          <Link to="/terms">Пользовательское соглашение</Link>
+          <Link to="/cookies">Cookie</Link>
+        </div>
       </div>
     </footer>
   )

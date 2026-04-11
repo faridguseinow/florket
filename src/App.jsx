@@ -12,6 +12,9 @@ import Cart from "@/pages/Cart"
 import Contacts from "@/pages/Contacts"
 import Delivery from "@/pages/Delivery"
 import Search from "@/pages/Search"
+import Privacy from "@/pages/Privacy"
+import Terms from "@/pages/Terms"
+import Cookies from "@/pages/Cookies"
 
 
 
@@ -41,6 +44,9 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/cookies" element={<Cookies />} />
 
       </Routes>
 
