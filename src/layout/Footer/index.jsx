@@ -15,9 +15,9 @@ export default function Footer() {
 
         {/* 1. Бренд */}
         <div className="footer__col">
-          <h2 className="footer__logo">ФЛОРКЕТ</h2>
+          <Link to="/" className="footer__logo">ФЛОРКЕТ</Link>
           <p className="footer__text">
-            Доставка свежих цветов по Москве и области. 
+            Доставка свежих цветов по Москве и области.
             Быстро, качественно и с гарантией.
           </p>
         </div>
@@ -67,11 +67,14 @@ export default function Footer() {
       {/* Нижняя линия */}
       <div className="footer__bottom">
         <p>© {new Date().getFullYear()} Флоркет. Все права защищены.</p>
-        <div className="footer__legal_links">
-          <Link to="/privacy">Политика конфиденциальности</Link>
-          <Link to="/terms">Пользовательское соглашение</Link>
-          <Link to="/cookies">Cookie</Link>
-        </div>
+        <a
+          className="site-footer__credit"
+          href="https://faridguseinow.framer.website/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Создание сайте - Farid Huseynov
+        </a>
       </div>
     </footer>
   )

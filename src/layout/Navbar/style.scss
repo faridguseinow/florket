@@ -1,13 +1,15 @@
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--color-white);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--color-white);
+  border-radius: 0 0 16px 16px;
+  padding: 0 8px;
 
   .top_links {
     display: flex;
@@ -196,30 +198,28 @@ header {
 
 @media screen and (max-width: 768px) {
   header {
-    position: fixed;
-
     .top_links {
       display: none;
     }
 
     .navbar {
       max-width: 768px;
-      padding: 0 16px;
+      padding: 8px 16px;
       height: auto;
 
       .nav_inner {
-        gap: 10px;
-        padding: 0px 16px;
+        padding: 0;
+        justify-content: center;
 
 
         .logo {
-          font-size: 20px;
+          font-size: 22px;
           letter-spacing: -2px;
         }
 
         .search {
           width: 100%;
-          padding: 10px;
+          padding: 0;
 
           input {
             font-size: 16px;
@@ -227,7 +227,7 @@ header {
         }
 
         .nav_actions {
-          gap: 012px;
+          gap: 12px;
 
           .nav_button {
             display: none;

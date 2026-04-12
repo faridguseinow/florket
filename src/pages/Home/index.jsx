@@ -1,12 +1,14 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './style.scss'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet'
+import { useSearchParams } from 'react-router-dom'
 
 // components
 import Slider from '@/components/Slider'
 import FlowerCatalogGrid from '@/components/FlowerCatalogGrid'
 import { useStore } from '@/useStore'
+import { SUBCATEGORY_SHOWCASE } from '@/constants/subcategoryShowcase'
 
 // constants
 import { pageVariants, pageTransition } from '@/constants/framerSettings.js'
@@ -14,7 +16,10 @@ import { pageVariants, pageTransition } from '@/constants/framerSettings.js'
 const Index = () => {
     const catalogRef = useRef(null)
     const { products } = useStore()
-    const [activeSubcategory, setActiveSubcategory] = useState("all")
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [activeSubcategory, setActiveSubcategory] = useState(
+        searchParams.get("subcategory") || "all"
+    )
 
     const sliderMainOptions = [
         {
@@ -29,38 +34,63 @@ const Index = () => {
     ]
 
     const subcategoryChips = useMemo(() => {
-        const fromProducts = [...new Set(
-            (Array.isArray(products) ? products : [])
-                .map((item) => String(item?.subcategory ?? "").trim())
-                .filter(Boolean)
-        )]
+        const productsList = Array.isArray(products) ? products : []
 
-        if (fromProducts.length) {
-            return ["all", ...fromProducts]
-        }
+        return SUBCATEGORY_SHOWCASE
+            .filter((item) => item.enabled)
+            .filter((item) => {
+                if (item.key === "all") return true
+                return productsList.some((product) => product.subcategory === item.key)
+            })
+            .map((item) => {
+                const coverFromProducts = productsList.find(
+                    (product) => product.subcategory === item.key && product.image
+                )?.image
 
-        return [
-            "all",
-            "Розы",
-            "Тюльпаны",
-            "Пионы",
-            "Хризантема",
-            "Гортензия",
-            "Альстромерия",
-            "Гербера",
-            "Гипсофила",
-            "Смешанное",
-        ]
-    }, [products])
+                return {
+                    ...item,
+                    // Приоритет у изображения из конфига, чтобы им можно было управлять вручную.
+                    image: String(item.image || coverFromProducts || "").trim(),
+                }
+            })
+    }, [products, SUBCATEGORY_SHOWCASE])
 
     const handleSubcategoryClick = (subcategory) => {
         setActiveSubcategory(subcategory)
+        if (subcategory === "all") {
+            setSearchParams({})
+        } else {
+            setSearchParams({ subcategory })
+        }
 
         catalogRef.current?.scrollIntoView({
             behavior: "smooth",
             block: "start",
         })
     }
+
+    useEffect(() => {
+        const fromUrl = searchParams.get("subcategory") || "all"
+        if (fromUrl !== activeSubcategory) {
+            setActiveSubcategory(fromUrl)
+        }
+    }, [searchParams, activeSubcategory])
+
+    useEffect(() => {
+        if (!subcategoryChips.length) return
+
+        const isAllowed = subcategoryChips.some((item) => item.key === activeSubcategory)
+        if (isAllowed) return
+
+        const fallbackKey = subcategoryChips[0].key
+        setActiveSubcategory(fallbackKey)
+
+        if (fallbackKey === "all") {
+            setSearchParams({})
+        } else {
+            setSearchParams({ subcategory: fallbackKey })
+        }
+    }, [subcategoryChips, activeSubcategory, setSearchParams])
 
     return (
         <motion.div
@@ -76,30 +106,33 @@ const Index = () => {
                 <title>Флоркет — Главная</title>
             </Helmet>
 
-            {/* SUBCATEGORIES */}
-            <div className="categories_bar">
-                <div className="categories_inner">
-
-                    {subcategoryChips.map((subcategory) => (
-                        <button
-                            key={subcategory}
-                            type="button"
-                            className={`category_chip ${activeSubcategory === subcategory ? "active" : ""}`}
-                            onClick={() => handleSubcategoryClick(subcategory)}
-                        >
-                            {subcategory === "all" ? "Все букеты" : subcategory}
-                        </button>
-                    ))}
-
-                </div>
-            </div>
-
             {/* HERO */}
             <div className="slide_wrapper">
                 <Slider
                     loop={true}
                     options={sliderMainOptions}
                 />
+            </div>
+
+            {/* SUBCATEGORIES */}
+            <div className="categories_bar">
+                <div className="categories_inner">
+
+                    {subcategoryChips.map((subcategory) => (
+                        <button
+                            key={subcategory.key}
+                            type="button"
+                            className={`category_chip ${activeSubcategory === subcategory.key ? "active" : ""}`}
+                            onClick={() => handleSubcategoryClick(subcategory.key)}
+                        >
+                            <div className="category_chip_media">
+                                <img src={String(subcategory.image || "").trim()} alt={subcategory.label} />
+                            </div>
+                            <span>{subcategory.label}</span>
+                        </button>
+                    ))}
+
+                </div>
             </div>
 
             {/* DELIVERY BANNER */}

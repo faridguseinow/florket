@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
+import { Heart, ShoppingCart } from "lucide-react"
 import ProductCard from "@/components/ProductCard"
 import { useStore } from "@/useStore"
 import {
@@ -16,17 +17,13 @@ import "./style.scss"
 const Product = () => {
 
   const { id } = useParams()
-  const { products, setProducts } = useStore()
+  const { products, setProducts, addToCart, favorites, toggleFavorite, cart } = useStore()
   const [product, setProduct] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
-  const imageFrameRef = useRef(null)
-  const [zoomState, setZoomState] = useState({
-    active: false,
-    x: 50,
-    y: 50,
-  })
+  const [isViewerOpen, setIsViewerOpen] = useState(false)
+  const [viewerScale, setViewerScale] = useState(1)
 
   const getOrderLink = (baseUrl) => {
     const message = encodeURIComponent(buildProductMessage(product))
@@ -81,27 +78,38 @@ const Product = () => {
   if (loading) return <div className="product_page loading">Загрузка товара...</div>
   if (error) return <div className="product_page loading">{error}</div>
   if (!product) return <div className="product_page loading">Товар не найден</div>
+  const isFavorite = favorites.includes(product.id)
+  const inCart = cart.some((item) => item.id === product.id)
 
-  const handleImageMove = (event) => {
-    const frame = imageFrameRef.current
-    if (!frame) return
-
-    const rect = frame.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 100
-    const y = ((event.clientY - rect.top) / rect.height) * 100
-
-    setZoomState({
-      active: true,
-      x: Math.min(Math.max(x, 0), 100),
-      y: Math.min(Math.max(y, 0), 100),
-    })
+  const openImageViewer = () => {
+    setIsViewerOpen(true)
+    setViewerScale(1)
   }
 
-  const handleImageLeave = () => {
-    setZoomState((prev) => ({ ...prev, active: false }))
+  const closeImageViewer = () => {
+    setIsViewerOpen(false)
+    setViewerScale(1)
   }
 
-  // 🔻 похожие
+  const zoomInViewer = () => {
+    setViewerScale((prev) => Math.min(prev + 0.25, 3))
+  }
+
+  const zoomOutViewer = () => {
+    setViewerScale((prev) => Math.max(prev - 0.25, 1))
+  }
+
+  const handleViewerWheel = (event) => {
+    event.preventDefault()
+
+    if (event.deltaY < 0) {
+      zoomInViewer()
+      return
+    }
+
+    zoomOutViewer()
+  }
+
   let similar = allProducts
     .filter(i => i.id != product.id)
     .filter(i =>
@@ -138,6 +146,14 @@ const Product = () => {
         <Link to="/">Главная</Link>
         <span>/</span>
         <Link to="/">{product.category}</Link>
+        {product.subcategory && (
+          <>
+            <span>/</span>
+            <Link to={`/?subcategory=${encodeURIComponent(product.subcategory)}`}>
+              {product.subcategory}
+            </Link>
+          </>
+        )}
         <span>/</span>
         <span>{product.title}</span>
       </div>
@@ -145,65 +161,110 @@ const Product = () => {
       <div className="product_container">
 
         <div
-          ref={imageFrameRef}
-          className={`product_image_frame ${zoomState.active ? "zoom-active" : ""}`}
-          onMouseMove={handleImageMove}
-          onMouseLeave={handleImageLeave}
+          className="product_image_frame"
+          onClick={openImageViewer}
         >
           <img src={product.image} alt={product.title} />
-
-          <div
-            className="zoom_lens"
-            aria-hidden="true"
-            style={{
-              backgroundImage: `url(${product.image})`,
-              backgroundPosition: `${zoomState.x}% ${zoomState.y}%`,
-            }}
-          />
         </div>
+        <p className="product_image_note">Фото может отличаться от реального товара</p>
 
         <div className="product_info">
 
           <h1>{product.title}</h1>
 
           <div className="price">{product.price} ₽</div>
+          <div className="product_quick_actions">
+            <button
+              type="button"
+              className={`product_quick_btn ${inCart ? "active-cart" : ""}`}
+              onClick={() =>
+                addToCart({
+                  id: product.id,
+                  name: product.title,
+                  price: product.price,
+                  image: product.image,
+                })
+              }
+            >
+              <ShoppingCart size={16} />
+              {inCart ? "В корзине" : "В корзину"}
+            </button>
 
-          <p className="desc">{product.description}</p>
+            <button
+              type="button"
+              className={`product_quick_btn ${isFavorite ? "active" : ""}`}
+              onClick={() => toggleFavorite(product.id)}
+            >
+              <Heart size={16} />
+              {isFavorite ? "В избранном" : "В избранное"}
+            </button>
+          </div>
+
+          <div className="desc_block">
+            <h3>Описание букета</h3>
+            <p className="desc">{product.description}</p>
+          </div>
 
           <div className="purchase_actions">
+            <span className="purchase_label">Заказать через:</span>
+
             <a
               href={getOrderLink(TELEGRAM_URL)}
               className="purchase_btn primary"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Купить в Telegram
+              Telegram
             </a>
 
-            {MAX_URL && (
+            {MAX_URL ? (
               <a
                 href={getOrderLink(MAX_URL)}
                 className="purchase_btn"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Купить в MAX
+                MAX
               </a>
+            ) : (
+              <button type="button" className="purchase_btn disabled" disabled>
+                MAX
+              </button>
             )}
 
             <a href={`tel:${PRIMARY_PHONE}`} className="purchase_btn secondary">
-              Позвонить: {PRIMARY_PHONE_LABEL}
+              Позвонить
             </a>
           </div>
 
           <div className="attrs">
-
-            <div>Состав: {product.composition}</div>
-            <div>Высота: {product.height}</div>
-            <div>Тип: {product.type}</div>
-            <div>Цвет: {product.color.join(", ") || "Уточняйте у менеджера"}</div>
-            <div>Повод: {product.occasion.join(", ") || "Универсальный"}</div>
-
+            <h3>Характеристики</h3>
+            <div className="attrs_grid">
+              <div className="attr_item">
+                <span>Состав</span>
+                <strong>{product.composition || "Уточняйте у менеджера"}</strong>
+              </div>
+              <div className="attr_item">
+                <span>Высота</span>
+                <strong>{product.height || "Уточняйте у менеджера"}</strong>
+              </div>
+              <div className="attr_item">
+                <span>Тип</span>
+                <strong>{product.type || "Уточняйте у менеджера"}</strong>
+              </div>
+              <div className="attr_item">
+                <span>Цвет</span>
+                <strong>{product.color.join(", ") || "Уточняйте у менеджера"}</strong>
+              </div>
+              <div className="attr_item">
+                <span>Повод</span>
+                <strong>{product.occasion.join(", ") || "Универсальный"}</strong>
+              </div>
+              <div className="attr_item">
+                <span>Контакт</span>
+                <strong>{PRIMARY_PHONE_LABEL}</strong>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -221,6 +282,29 @@ const Product = () => {
         </div>
 
       </div>
+
+      {isViewerOpen && (
+        <div className="image_viewer" onClick={closeImageViewer}>
+          <div className="image_viewer_inner" onClick={(event) => event.stopPropagation()}>
+            <div className="viewer_controls">
+              <button type="button" onClick={zoomOutViewer}>-</button>
+              <span>{Math.round(viewerScale * 100)}%</span>
+              <button type="button" onClick={zoomInViewer}>+</button>
+              <button type="button" className="close_btn" onClick={closeImageViewer}>
+                Закрыть
+              </button>
+            </div>
+
+            <div className="viewer_image_wrap" onWheel={handleViewerWheel}>
+              <img
+                src={product.image}
+                alt={product.title}
+                style={{ transform: `scale(${viewerScale})` }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
 

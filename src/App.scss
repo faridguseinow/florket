@@ -16,6 +16,12 @@
   --font: 'Georgia', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 // @font-face {
 //   font-family: 'Roscha';
 //   src: url('/src/assets/fonts/Roscha.ttf') format('truetype');
@@ -33,6 +39,12 @@ body,
   margin: 0;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -46,6 +58,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
   max-width: 1140px;
 }
 
@@ -175,7 +188,7 @@ button,
             }
 
             img {
-              border-radius: 0;
+              border-radius: 12px;
             }
           }
         }
@@ -217,7 +230,7 @@ button,
 @media screen and (max-width: 768px) {
 
   body {
-    padding-bottom: 64px;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
 
   h1 {

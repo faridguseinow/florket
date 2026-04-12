@@ -1,8 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import { useStore } from "../../useStore"
 import ProductCard from "@/components/ProductCard"
 import "./style.scss"
+
+const mixItems = (list) => {
+  const result = [...list]
+
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[result[i], result[j]] = [result[j], result[i]]
+  }
+
+  return result
+}
 
 const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
 
@@ -18,6 +29,9 @@ const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
   const [color, setColor] = useState("all")
   const [occasion, setOccasion] = useState("all")
   const [type, setType] = useState("all")
+  const [page, setPage] = useState(1)
+  const catalogTopRef = useRef(null)
+  const didMountRef = useRef(false)
 
   const [categories, setCategories] = useState([])
   const [subcategories, setSubcategories] = useState([])
@@ -32,8 +46,9 @@ const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
 
   useEffect(() => {
     const clean = Array.isArray(products) ? products : []
+    const mixed = mixItems(clean)
 
-    setItems(clean)
+    setItems(mixed)
     setCategories([...new Set(clean.map(i => i.category).filter(Boolean))])
     setSubcategories([...new Set(clean.map(i => i.subcategory).filter(Boolean))])
     setHeights([...new Set(clean.map(i => i.height).filter(Boolean))])
@@ -58,9 +73,52 @@ const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
     return true
   })
 
+  const ITEMS_PER_PAGE = 16
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE))
+  const paginatedItems = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+
+  useEffect(() => {
+    setPage(1)
+  }, [search, category, subcategory, height, type, color, occasion])
+
+  useEffect(() => {
+    if (page <= totalPages) return
+    setPage(totalPages)
+  }, [page, totalPages])
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true
+      return
+    }
+
+    catalogTopRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }, [page])
+
+  const getPaginationTokens = () => {
+    if (totalPages <= 6) {
+      return Array.from({ length: totalPages }, (_, index) => index + 1)
+    }
+
+    if (page <= 3) {
+      return [1, 2, 3, 4, "...", totalPages]
+    }
+
+    if (page >= totalPages - 2) {
+      return [1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages]
+    }
+
+    return [1, "...", page - 1, page, page + 1, "...", totalPages]
+  }
+
+  const tokens = getPaginationTokens()
+
   return (
 
-    <div className="catalog">
+    <div className="catalog" ref={catalogTopRef}>
 
       <div className="catalog_controls">
 
@@ -111,12 +169,51 @@ const FlowerCatalogGrid = ({ selectedSubcategory = "all" }) => {
 
         {loading
           ? [...Array(6)].map((_, i) => <ProductCard key={i} isLoading />)
-          : filtered.map(item => (
+          : paginatedItems.map(item => (
             <ProductCard key={item.id} product={item} />
           ))
         }
 
       </div>
+
+      {!loading && totalPages > 1 && (
+        <div className="pagination">
+          <button
+            type="button"
+            className="pagination_nav"
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+          >
+            {"<"}
+          </button>
+
+          {tokens.map((token, index) => (
+            token === "..."
+              ? (
+                <span className="pagination_dots" key={`dots-${index}`}>...</span>
+              )
+              : (
+                <button
+                  type="button"
+                  key={token}
+                  className={`pagination_page ${token === page ? "active" : ""}`}
+                  onClick={() => setPage(token)}
+                >
+                  {token}
+                </button>
+              )
+          ))}
+
+          <button
+            type="button"
+            className="pagination_nav"
+            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            {">"}
+          </button>
+        </div>
+      )}
 
     </div>
 

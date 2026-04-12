@@ -109,7 +109,7 @@ export const loadProducts = async ({ force = false } = {}) => {
 
 export const buildProductMessage = (product) => {
   const lines = [
-    "Здравствуйте! Хочу заказать букет.",
+    `Здравствуйте! Хочу заказать букет «${product.title}».`,
     "",
     `Товар: ${product.title}`,
     `Цена: ${product.price} руб.`,
@@ -119,6 +119,30 @@ export const buildProductMessage = (product) => {
   if (product.composition) lines.push(`Состав: ${product.composition}`);
   if (product.height) lines.push(`Высота: ${product.height}`);
   if (product.color?.length) lines.push(`Цвет: ${product.color.join(", ")}`);
+
+  return lines.join("\n");
+};
+
+export const buildCartMessage = (cart, total) => {
+  const items = Array.isArray(cart) ? cart : [];
+
+  const lines = ["Здравствуйте! Хочу оформить заказ из корзины.", ""];
+
+  const shortList = items.map((item, index) => {
+    const qty = Number(item?.quantity) || 1;
+    const price = Number(item?.price) || 0;
+    const title = String(item?.name || item?.title || "").trim();
+
+    return `${index + 1}) ${title} x${qty} — ${price * qty} руб.`;
+  });
+
+  if (shortList.length) {
+    lines.push("Состав корзины:");
+    lines.push(...shortList);
+    lines.push("");
+  }
+
+  lines.push(`Итого: ${Number(total) || 0} руб.`);
 
   return lines.join("\n");
 };

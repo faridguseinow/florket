@@ -1,29 +1,117 @@
 .favorites_page {
-  padding: 120px 16px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 28px 20px 56px;
 }
 
-.favorites_title {
-  margin-bottom: 24px;
-}
+.favorites_heading {
+  margin-bottom: 22px;
 
-/* GRID */
+  .favorites_title {
+    margin: 0 0 8px;
+  }
+
+  p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+  }
+}
 
 .favorites_grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
+.favorites_empty_card {
+  border: 1px solid #d9e6f8;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 12px 26px rgba(31, 56, 89, 0.08);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px;
+  color: var(--color-primary);
 
-/* MOBILE */
+  h3 {
+    margin: 0;
+    color: var(--color-primary-hover);
+    font-size: 22px;
+  }
+
+  p {
+    max-width: 420px;
+    margin: 0;
+    color: #556277;
+  }
+}
+
+.favorites_cta {
+  margin-top: 6px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    color: #fff;
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .favorites_grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 @media screen and (max-width: 768px) {
   .favorites_page {
-    padding: 64px 16px;
+    padding: 16px 16px 28px;
+  }
+
+  .favorites_heading {
+    margin-bottom: 16px;
+
+    .favorites_title {
+      margin-bottom: 6px;
+      font-size: 34px;
+    }
+
+    p {
+      font-size: 13px;
+    }
   }
 
   .favorites_grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .favorites_empty_card {
+    min-height: 220px;
+    padding: 18px;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 }

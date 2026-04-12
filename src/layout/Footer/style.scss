@@ -1,7 +1,8 @@
 .footer {
   background: var(--color-primary); // темный
   color: var(--color-white);
-  padding: 30px 20px;
+  padding: 24px 20px;
+  border-radius: 16px 16px 0 0;
 
   a {
     color: var(--color-white);
@@ -24,25 +25,26 @@
     grid-template-columns: repeat(4, 1fr);
     align-items: start;
     justify-self: start;
-    gap: 30px;
+    gap: 24px;
   }
 
   &__logo {
-    font-size: 38px;
+    font-size: 34px;
     font-family: var(--font);
     color: var(--color-white);
     margin: 0;
+    display: inline-block;
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--color-white);
     opacity: 0.6;
     line-height: 1.5;
   }
 
   &__title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-white);
     margin-top: 0;
@@ -58,7 +60,7 @@
   }
 
   &__socials {
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
     gap: 10px;
 
@@ -68,9 +70,9 @@
   }
 
   &__bottom {
-    margin-top: 30px;
+    margin-top: 22px;
     border-top: 1px solid #374151;
-    padding-top: 15px;
+    padding-top: 12px;
     text-align: center;
     font-size: 13px;
     color: var(--color-border);
@@ -89,25 +91,74 @@
 /* 📱 Мобильная адаптация */
 @media screen and (max-width: 768px) {
   .footer {
+    padding: 16px 14px 74px;
+
     &__container {
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    &__logo {
+      font-size: 26px;
+      text-align: left;
+    }
+
+    &__text {
+      font-size: 13px;
+      text-align: left;
+      margin: 0;
+      max-width: 420px;
+    }
+
+    &__title {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    &__col {
+      ul {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 12px;
+
+        li {
+          margin: 0;
+        }
+      }
+    }
+
+    // делаем мобильный футер компактнее
+    &__col:nth-child(2) {
+      display: none;
+    }
+
+    &__socials {
+      margin-top: 6px;
+      gap: 8px;
+
+      a {
+        font-size: 13px;
+      }
+    }
+
+    &__bottom {
+      margin-top: 12px;
+      padding-top: 10px;
+      font-size: 12px;
+
+      .footer__legal_links {
+        margin-top: 8px;
+        gap: 8px 12px;
+        font-size: 12px;
+        justify-content: flex-start;
+      }
     }
   }
 }
 
 @media screen and (max-width: 480px) {
   .footer {
-    &__container {
-      grid-template-columns: 1fr;
-    }
-
-    &__logo {
-      text-align: center;
-    }
-
-    &__text {
-      text-align: center;
-    }
+    padding: 16px;
   }
 }

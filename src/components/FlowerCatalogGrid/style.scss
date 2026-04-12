@@ -45,29 +45,60 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-
-
 }
 
 .pagination {
-  margin-top: 30px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
 
-  button {
-    padding: 8px 12px;
-    border: 1px solid var(--color-border);
-    background: var(--color-white);
-    cursor: pointer;
+  button,
+  .pagination_dots {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
 
-    &.active {
+  .pagination_nav,
+  .pagination_page {
+    border: 1px solid #d8e3f4;
+    background: #fff;
+    color: #2e3e56;
+
+    &.active,
+    &:hover:not(:disabled) {
       background: var(--color-primary);
       color: var(--color-white);
+      border-color: var(--color-primary);
     }
 
     &:disabled {
-      opacity: 0.4;
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  .pagination_dots {
+    color: #64748b;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pagination {
+    gap: 6px;
+
+    button,
+    .pagination_dots {
+      min-width: 32px;
+      height: 32px;
+      font-size: 13px;
     }
   }
 }

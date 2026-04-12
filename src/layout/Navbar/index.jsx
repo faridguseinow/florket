@@ -166,7 +166,7 @@ const Navbar = () => {
 
           <div className="nav_actions">
 
-            <Link to="/favorites" className="nav_button">
+            <Link to="/favorites" className="nav_button" id="favorites-icon">
               <Heart size={16} />
             </Link>
 

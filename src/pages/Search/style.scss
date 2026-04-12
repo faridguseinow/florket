@@ -1,5 +1,8 @@
 .search_page {
-  padding: 120px 16px;
+  padding: 28px 20px 56px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .search_title {
@@ -25,6 +28,10 @@
 /* MOBILE */
 
 @media (max-width: 768px) {
+  .search_page {
+    padding: 16px 16px 24px;
+  }
+
   .search_grid {
     grid-template-columns: repeat(2, 1fr);
   }
