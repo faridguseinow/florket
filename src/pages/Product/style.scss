@@ -46,13 +46,16 @@
       object-fit: cover;
       display: block;
     }
+
+    .product_image_note {
+      text-align: center;
+      margin: 0;
+      font-size: 11px;
+      color: #7b8799;
+    }
   }
 
-  .product_image_note {
-    margin: 8px 4px 0;
-    font-size: 12px;
-    color: #7b8799;
-  }
+
 
   .product_info {
     display: flex;

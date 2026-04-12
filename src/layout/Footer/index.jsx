@@ -58,7 +58,7 @@ export default function Footer() {
               <a href={MAX_URL} target="_blank" rel="noopener noreferrer">MAX</a>
             ) : null}
             <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a href="#">Вконтакте</a>
+            <a href="https://vk.com/florket" target="_blank" rel="noopener noreferrer">Вконтакте</a>
           </div>
         </div>
 

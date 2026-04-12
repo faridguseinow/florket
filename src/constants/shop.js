@@ -8,7 +8,7 @@ export const SECONDARY_PHONE = "+79162579174";
 export const SECONDARY_PHONE_LABEL = "+7 (916) 257 91 74";
 export const EMAIL = "florketing@yandex.ru";
 
-export const TELEGRAM_USERNAME = "florket";
+export const TELEGRAM_USERNAME = "florketcveti";
 export const TELEGRAM_URL = `https://t.me/${TELEGRAM_USERNAME}`;
 
 // Add the MAX deep-link here when it is available.

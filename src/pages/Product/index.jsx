@@ -165,8 +165,8 @@ const Product = () => {
           onClick={openImageViewer}
         >
           <img src={product.image} alt={product.title} />
+          <p className="product_image_note">Фото может отличаться от реального товара</p>
         </div>
-        <p className="product_image_note">Фото может отличаться от реального товара</p>
 
         <div className="product_info">
 
@@ -209,7 +209,7 @@ const Product = () => {
             <span className="purchase_label">Заказать через:</span>
 
             <a
-              href={getOrderLink(TELEGRAM_URL)}
+              href={getOrderLink("https://t.me/florketcveti")}
               className="purchase_btn primary"
               target="_blank"
               rel="noopener noreferrer"
