@@ -29,11 +29,11 @@
       transition: 0.2s;
 
       &:hover {
-        border-color: #1c2c5b;
+        border-color: var(--color-primary);
       }
 
       &:focus {
-        border-color: #1c2c5b;
+        border-color: var(--color-primary);
         outline: none;
       }
     }

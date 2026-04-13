@@ -1,5 +1,6 @@
 import { Trash } from "lucide-react"
 import { Link } from "react-router-dom"
+import { ShoppingCart } from "lucide-react"
 import { useStore } from "../../useStore"
 import {
   MAX_URL,
@@ -26,6 +27,7 @@ export default function CartPage() {
 
       {!cart.length ? (
         <div className="cart_empty_card">
+          <ShoppingCart size={28} />
           <h3>Корзина пока пуста</h3>
           <p>Выберите понравившийся букет и вернитесь сюда для оформления заказа.</p>
           <Link to="/" className="cart_cta">

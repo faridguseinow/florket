@@ -2,16 +2,27 @@
   padding: 28px 20px 56px;
 
   .breadcrumbs {
-    font-size: 13px;
+    font-size: 14px;
     color: #667085;
     margin-bottom: 20px;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     gap: 6px;
 
     a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
       color: var(--color-primary);
       opacity: 0.9;
+    }
+
+    span {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 

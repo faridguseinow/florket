@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
-import { Heart, ShoppingCart } from "lucide-react"
+import { Heart, ShoppingCart, Home, ChevronRight } from "lucide-react"
 import ProductCard from "@/components/ProductCard"
 import { useStore } from "@/useStore"
 import {
@@ -143,19 +143,19 @@ const Product = () => {
 
       {/* breadcrumbs */}
       <div className="breadcrumbs">
-        <Link to="/">Главная</Link>
-        <span>/</span>
-        <Link to="/">{product.category}</Link>
+        <Link to="/"> <Home size={16} />Главная</Link>
+
+        <Link to="/"> <ChevronRight size={16} /> {product.category}</Link>
         {product.subcategory && (
           <>
-            <span>/</span>
+
             <Link to={`/?subcategory=${encodeURIComponent(product.subcategory)}`}>
-              {product.subcategory}
+              <ChevronRight size={16} /> {product.subcategory}
             </Link>
           </>
         )}
-        <span>/</span>
-        <span>{product.title}</span>
+
+        <span> <ChevronRight size={16} /> {product.title}</span>
       </div>
 
       <div className="product_container">
@@ -165,7 +165,7 @@ const Product = () => {
           onClick={openImageViewer}
         >
           <img src={product.image} alt={product.title} />
-          <p className="product_image_note">Фото может отличаться от реального товара</p>
+          <p className="product_image_note">Товар на фото может отличаться от реального товара</p>
         </div>
 
         <div className="product_info">
